@@ -1,0 +1,16 @@
+docker build -t tesa-bid-server .
+
+docker run -d -p 9000:9000 --name tesa-bid tesa-bid-server
+
+docker stop tesa-bid
+
+docker rm tesa-bid
+
+docker logs tesa-bid
+
+
+curl -X POST "http://localhost:9000/score" \
+-H "Content-Type: application/json" \
+-d '{
+  "snippet": "This is a sample text for the API."
+}'
